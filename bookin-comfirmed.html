@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.confirmation-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.confirmation-details {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+h1 {
+    color: #007bff;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="confirmation-container">
+        <h1>Booking Confirmation</h1>
+        <div class="confirmation-details">
+            <p><strong>Booking ID:</strong> <span id="booking-id"></span></p>
+            <p><strong>Name:</strong> <span id="user-name"></span></p>
+            <p><strong>Email:</strong> <span id="user-email"></span></p>
+            <p><strong>Check-in Date:</strong> <span id="checkin-date"></span></p>
+            <p><strong>Check-out Date:</strong> <span id="checkout-date"></span></p>
+            <p><strong>Room Type:</strong> <span id="room-type"></span></p>
+            <p><strong>Total Price:</strong> $<span id="total-price"></span></p>
+        </div>
+        <div id="countdown"></div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Sample booking data (you can replace this with actual data from your booking process)
+    const bookingData = {
+        bookingID: "123456789",
+        userName: "Godwin Andrew",
+        userEmail: "godwin99@gmail.com",
+        checkinDate: "2023-11-15",
+        checkoutDate: "2023-11-20",
+        roomType: "Presidential Room",
+        totalPrice: 500
+    };
+
+    // Display booking details on the confirmation page
+    document.getElementById("booking-id").textContent = bookingData.bookingID;
+    document.getElementById("user-name").textContent = bookingData.userName;
+    document.getElementById("user-email").textContent = bookingData.userEmail;
+    document.getElementById("checkin-date").textContent = bookingData.checkinDate;
+    document.getElementById("checkout-date").textContent = bookingData.checkoutDate;
+    document.getElementById("room-type").textContent = bookingData.roomType;
+    document.getElementById("total-price").textContent = bookingData.totalPrice;
+
+    // Countdown timer for redirection (10 seconds in this example)
+    const countdownElement = document.getElementById("countdown");
+    const countdownEndTime = Date.now() + 10000;
+
+    const countdownInterval = setInterval(function() {
+        const currentTime = Date.now();
+        const remainingTime = countdownEndTime - currentTime;
+
+        const remainingSeconds = Math.floor(remainingTime / 1000);
+
+        countdownElement.textContent = `Redirecting in ${remainingSeconds}s`;
+
+        if (remainingTime <= 0) {
+            clearInterval(countdownInterval);
+            window.location.href = "booked.html"; // Replace with your desired URL
+        }
+    }, 1000);
+});
+
+    </script>
+</body>
+
+</html>
